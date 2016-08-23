@@ -12,8 +12,8 @@
 		"url": "https://github.com/scambo00/wnrAddOn"
 	},
     "node-red": {
-    "nodes": {
-    	"Global Triggers": "add-ons/wnrTriggers.js"
-	}
+	    "nodes": {
+	        "wnrTriggers": "add-ons/wnrTriggers.js"
+	    }
     }
 }
