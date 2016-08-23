@@ -13,7 +13,7 @@
 	},
     "node-red": {
     "nodes": {
-		"Global Triggers": "add-ons/wnrTriggers.js",
+    	"Global Triggers": "add-ons/wnrTriggers.js",
 	}
     }
 }
