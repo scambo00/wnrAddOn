@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('wnrCmdMsg',{
+        category: 'wnr-AddOns',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			winkName: {value:""},
+			winkType: {value:""},
+			powered: {value:"off"},
+			brightness: {value:"0"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"wnrCmdMsg";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="wnrCmdMsg">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	
+	<hr>
+	
+	<div class="form-row">
+        <label for="node-input-winkName"><i class="icon-tag"></i> Device</label>
+        <input type="text" id="node-input-winkName" placeholder="">
+    </div>
+	<div class="form-row">
+        <label for="node-input-winkType"><i class="icon-tag"></i> Type</label>
+        <input type="text" id="node-input-winkType" placeholder="">
+    </div>
+	<div class="form-row">
+        <label for="node-input-powered"><i class="icon-tag"></i> Command</label>
+        <input type="text" id="node-input-powered" placeholder="">
+    </div>
+	<div class="form-row">
+        <label for="node-input-brightness"><i class="icon-tag"></i> Level</label>
+        <input type="text" id="node-input-brightness" placeholder="">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="wnrCmdMsg">
+    <p>A node that creates wink API message</p>
+</script>
