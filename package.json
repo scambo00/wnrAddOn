@@ -4,6 +4,7 @@
     "description": "A set of Node-RED nodes for wink node red",
     "author": "Will Scarangello (https://github.com/scambo00)",
     "dependencies": {
+		"lodash": "^4.6.1"
     },
     "keywords": [ "node-red", "wink" ],
 	"license": "MIT",
@@ -14,8 +15,8 @@
     "node-red": {
 	    "nodes": {
 	        "wnrTriggers": "add-ons/wnrTriggers.js",
-			"wnrRobots": "add-ons/wnrRobots.js",
-			"wnrCmdMsg": "add-ons/wnrCmdMsg.js"
+			"wnrRobots"  : "add-ons/wnrRobots.js",
+			"wnrCmdMsg"  : "add-ons/wnrCmdMsg.js"
 	    }
     }
 }
