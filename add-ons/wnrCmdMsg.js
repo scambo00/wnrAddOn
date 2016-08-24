@@ -26,7 +26,7 @@ module.exports = function(RED) {
 			true:  createMsg('on', 'dot'),
             false: createMsg('off', 'ring'),
 			1:  createMsg('on', 'dot'),
-            0: createMsg('off', 'ring')
+            0: createMsg('off', 'ring'),
         };
 		;
 		
@@ -48,7 +48,8 @@ module.exports = function(RED) {
                 return key.substring(msgName.length).toLowerCase();
             });
 			
-            event.name = msgName.toUpperCase();
+            //event.name = msgName.toUpperCase();
+			event.name = 'createMsg()';
             event.shape = shape;
             event.callback = function () {
                 send(event, false);
