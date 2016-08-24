@@ -23,17 +23,20 @@ module.exports = function(RED) {
 	    var messages = {
             on:  createMsg('on', 'dot'),
             off: createMsg('off', 'ring')
+			true:  createMsg('on', 'dot'),
+            false: createMsg('off', 'ring')
+			1:  createMsg('on', 'dot'),
+            0: createMsg('off', 'ring')
         };
 		;
 		
 	    this.on('input', function(msg) {
             var event = messages[msg.payload];
 	        if (event) {
-				powered = msg.payload;
-                send(event, true);
+				send(event, true);
             } 
 	        else{
-	            node.status({fill: 'red', shape: 'dot', text: 'payload must be \'on\' or \'off\''});	
+	            node.status({fill: 'red', shape: 'dot', text: 'payload must be \'on, true, 1\' or \'off, false, 0\''});	
 	        }
         });
 		
