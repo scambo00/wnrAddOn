@@ -57,6 +57,7 @@ module.exports = function(RED) {
         }
 		
 	    function send(event, manual) {
+			var powered = event.name.toLowerCase();
 	    	WinkCMDmsg = globalContext.executeWinkCMD(config.winkName,config.winkType,powered,config.brightness);
             node.send(WinkCMDmsg);
 	    	node.status({
