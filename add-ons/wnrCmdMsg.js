@@ -22,9 +22,9 @@ module.exports = function(RED) {
 		
 	    var messages = {
             on:  createMsg('on', 'dot'),
-            off: createMsg('off', 'ring')
+            off: createMsg('off', 'ring'),
 			true:  createMsg('on', 'dot'),
-            false: createMsg('off', 'ring')
+            false: createMsg('off', 'ring'),
 			1:  createMsg('on', 'dot'),
             0: createMsg('off', 'ring')
         };
