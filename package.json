@@ -1,5 +1,5 @@
 {
-    "name": "wnrAddOn",
+    "name": "wnr-AddOn",
     "version": "0.0.1",
     "description": "A set of Node-RED nodes for wink node red",
     "author": "Will Scarangello (https://github.com/scambo00)",
