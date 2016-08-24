@@ -48,9 +48,8 @@ module.exports = function(RED) {
                 return key.substring(msgName.length).toLowerCase();
             });
 			
-            //event.name = msgName.toUpperCase();
-			event.name = 'createMsg()';
-            event.shape = shape;
+            event.name = msgName.toUpperCase();
+			event.shape = shape;
             event.callback = function () {
                 send(event, false);
             };
