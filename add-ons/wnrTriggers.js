@@ -15,13 +15,14 @@ module.exports = function(RED) {
 		var myTrigger = globalContext.Schedules; 
 		
         this.on('input', function(msg) {
+			
 			if (globalContext.Schedules==config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
 				node.status({
 					fill: 'green', 
 					shape: 'dot', 
-					text: 'match found: ' +key + ": " +myTrigger
+					text: 'match found: ' +key + ": " +config.onmatch
 				});
 				node.send(outmsg);
 		        
@@ -32,7 +33,7 @@ module.exports = function(RED) {
 				node.status({
 					fill: 'blue', 
 					shape: 'dot', 
-					text: 'match found: ' +key + ": " +myTrigger
+					text: 'match found: ' +key + ": " +config.offmatch
 				});				
 				node.send(outmsg);
 			}
