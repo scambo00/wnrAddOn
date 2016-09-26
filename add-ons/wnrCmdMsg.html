@@ -4,10 +4,10 @@
         color: '#a6bbcf',
         defaults: {
             name: {value:""},
-			winkName: {value:"back porch switch"},
-			winkType: {value:"light"},
-			powered: {value:"off"},
-			brightness: {value:"0"}
+			winkName: {value:""},
+			winkType: {value:""},
+			powered: {value:""},
+			brightness: {value:""}
         },
         inputs:1,
         outputs:1,
@@ -16,6 +16,9 @@
             return this.name||"wnrCmdMsg";
         }
     });
+	
+	oneditprepare: function() {
+    };
 </script>
 
 <script type="text/x-red" data-template-name="wnrCmdMsg">
@@ -40,6 +43,10 @@
           <option value="Bedroom">Bedroom</option>
 		  <option value="porch">Porch</option>
 		  <option value="Driveway">Driveway</option>
+		  <option value="back porch switch">Back Porch Switch</option>
+		  <option value="backyard switch">Back Yard Switch</option>
+		  <option value="dimmer plug 1">Dimmer 1</option>
+		  
         </select>
     </div>
 	<div class="form-row">
