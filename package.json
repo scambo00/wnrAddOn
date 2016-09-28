@@ -15,7 +15,7 @@
     "node-red": {
 	    "nodes": {
 	        "wnrTriggers": "add-ons/wnrTriggers.js",
-			"wnrRobots"  : "add-ons/wnrRobots.js",
+			"wnrRobots"  : "add-ons/wnrRobots.js"
 		}
     }
 }
