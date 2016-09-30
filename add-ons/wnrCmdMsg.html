@@ -15,46 +15,72 @@
         label: function() {
             return this.name||"wnrCmdMsg";
         }
+		oneditprepare: function () {
+            for(var key in context.global.winkState.WinkData) {
+				switch (key){
+					case 'siren':
+					case 'garage':
+					case 'lock':
+					case 'valve':
+						$('#node-input-winkType')
+							.append($("<option></option>")
+							.attr("value", key)
+							.text(key)
+						);
+						break;
+					case 'scenes':
+						$('#node-input-winkType')
+							.append($("<option></option>")
+							.attr("value", 'shortcut')
+							.text(key)
+						);
+						break;
+					case 'groups':
+						$('#node-input-winkType')
+							.append($("<option></option>")
+							.attr("value", 'group')
+							.text(key)
+						);
+						break;
+					case 'light_bulbs':
+					case 'binary_switches':
+					case 'powerstrips':
+						$('#node-input-winkType')
+							.append($("<option></option>")
+							.attr("value", 'light')
+							.text(key)
+						);
+						break;
+				}
+			}
+        }
     });
 	
 </script>
 
 <script type="text/x-red" data-template-name="wnrCmdMsg">
 
-    <div class="form-row">
+<div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-	
-	<hr>
-	<div class="form-row">
-        <label for="node-input-winkType"><i class="icon-tag"></i> Type</label>
-        <select id="node-input-winkType" style="width:73% !important">
-		  <option value="group">group</option>
-          <option value="light">light</option>
-        </select>
-    </div>
-	<div class="form-row">
+</div>
+<hr>
+<div class="form-row">
+    <label for="node-input-winkType"><i class="icon-tag"></i> Type</label>
+        <select id="node-input-winkType" style="width:73% !important"></select>
+ </div>
+<div class="form-row">
         <label for="node-input-winkName"><i class="icon-tag"></i> Device</label>
-        <select id="node-input-winkName" style="width:73% !important">
-		  <option value="Outside">Outside</option>
-          <option value="bedroom">Bedroom</option>
-		  <option value="porch">Porch</option>
-		  <option value="driveway">Driveway</option>
-		  <option value="back_porch_switch">Back Porch Switch</option>
-		  <option value="backyard_switch">Back Yard Switch</option>
-		  <option value="dimmer_plug_1">Dimmer 1</option>
-		  <option value="garden light 1">Garden light 1 1</option>
-		</select>
-    </div>
-	<div class="form-row">
-        <label for="node-input-powered"><i class="icon-tag"></i>Command</label>
-        <input type="text" id="node-input-powered" placeholder="">
-    </div>
-	<div class="form-row">
-        <label for="node-input-brightness"><i class="icon-tag"></i>Level</label>
-        <input type="text" id="node-input-brightness" placeholder="">
-    </div>
+        <select id="node-input-winkName" style="width:73% !important"></select>
+</div>
+ <div class="form-row">
+     <label for="node-input-powered"><i class="icon-tag"></i>Command</label>
+     <input type="text" id="node-input-powered" placeholder="">
+</div>
+<div class="form-row">
+     <label for="node-input-brightness"><i class="icon-tag"></i>Level</label>
+     <input type="text" id="node-input-brightness" placeholder="">
+</div>
 </script>
 
 <script type="text/x-red" data-help-name="wnrCmdMsg">
