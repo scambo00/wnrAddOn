@@ -16,7 +16,7 @@ module.exports = function(RED) {
 		
         this.on('input', function(msg) {
 			
-			if (myGlobal.key==config.onmatch){
+			if (myGlobal[key]==config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
 				node.status({
@@ -27,7 +27,7 @@ module.exports = function(RED) {
 				node.send(outmsg);
 		        
 			}
-            else if (myGlobal.key==config.offmatch){
+            else if (myGlobal[key]==config.offmatch){
 				outmsg.payload = config.offpayload;
 				outmsg.topic   = config.offtopic;
 				node.status({
