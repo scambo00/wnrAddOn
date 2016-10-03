@@ -41,7 +41,7 @@ module.exports = function(RED) {
 				node.status({
 					fill: 'red', 
 					shape: 'dot', 
-					text: 'match not found: ' +key + ": " +myTrigger + ": " +config.onmatch
+					text: 'match not found: ' +key 
 				});
 			}
 			
