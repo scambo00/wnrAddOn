@@ -12,10 +12,11 @@ module.exports = function(RED) {
 					};
 		var key = config.trigger;
 		var myGlobal = RED.settings.functionGlobalContext;
-        var trigger = myGlobal.key;	
+        var trigger = myGlobal[key];	
+		
 		if (typeof trigger === 'boolean'){
-			trigger = String(myGlobal.key);
-			node.warn('convert boolean');
+			trigger = String(trigger);
+			node.warn('convert to boolean:' +trigger);
 		}
 		
 		
