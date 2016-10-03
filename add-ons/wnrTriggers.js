@@ -14,7 +14,7 @@ module.exports = function(RED) {
 		var myGlobal = RED.settings.functionGlobalContext;
         var trigger = myGlobal.key;	
 		if (typeof trigger === 'boolean'){
-			trigger = String(myGlobal.key)
+			trigger = String(myGlobal.key);
 		}
 		
 		
