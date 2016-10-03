@@ -15,6 +15,7 @@ module.exports = function(RED) {
         var trigger = myGlobal.key;	
 		if (typeof trigger === 'boolean'){
 			trigger = String(myGlobal.key);
+			node.warn('convert boolean');
 		}
 		
 		
