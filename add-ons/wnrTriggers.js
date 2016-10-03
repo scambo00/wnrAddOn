@@ -12,6 +12,10 @@ module.exports = function(RED) {
 					};
 		var key = config.trigger;
 		var myGlobal = RED.settings.functionGlobalContext; 
+		if (typeof myGlobal.key === 'boolean'){
+			key = String(myGlobal.key)
+		}
+		
 		
         this.on('input', function(msg) {
 			
