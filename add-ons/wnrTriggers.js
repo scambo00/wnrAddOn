@@ -11,16 +11,19 @@ module.exports = function(RED) {
 						topic : ""
 					};
 		var key = config.trigger;
-		var myGlobal = RED.settings.functionGlobalContext; 
-		if (typeof myGlobal.key === 'boolean'){
-			key = String(myGlobal.key)
+		var myGlobal = RED.settings.functionGlobalContext;
+        var trigger = myGlobal.key;	
+		if (typeof trigger === 'boolean'){
+			trigger = String(myGlobal.key)
 		}
 		
 		
         this.on('input', function(msg) {
 			
 			if ( key in myGlobal ) {
-				if (myGlobal[key]==config.onmatch){
+				
+				
+				if (trigger == config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
 				node.status({
@@ -31,7 +34,7 @@ module.exports = function(RED) {
 				node.send(outmsg);
 		        
 			    }
-                else if (myGlobal[key]==config.offmatch){
+                else if (trigger == config.offmatch){
 				outmsg.payload = config.offpayload;
 				outmsg.topic   = config.offtopic;
 				node.status({
@@ -50,7 +53,7 @@ module.exports = function(RED) {
 			    }	
 			}
             else{
-				node.error("Variable '" + key + "' does not exist in 'context.global' - msg not sent");
+				node.error("Variable '" + key + "' does not exist in 'context.global'");
 			}		
         });
 		
