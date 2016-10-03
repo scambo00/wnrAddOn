@@ -12,11 +12,11 @@ module.exports = function(RED) {
 						topic : ""
 					};
 		var key = config.trigger;
-		var myTrigger = globalContext.Schedules; 
+		var myGlobal = RED.settings.functionGlobalContext; 
 		
         this.on('input', function(msg) {
 			
-			if (globalContext.Schedules==config.onmatch){
+			if (myGlobal.key==config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
 				node.status({
@@ -27,7 +27,7 @@ module.exports = function(RED) {
 				node.send(outmsg);
 		        
 			}
-            else if (globalContext.Schedules==config.offmatch){
+            else if (myGlobal.key==config.offmatch){
 				outmsg.payload = config.offpayload;
 				outmsg.topic   = config.offtopic;
 				node.status({
