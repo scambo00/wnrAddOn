@@ -6,7 +6,6 @@ module.exports = function(RED) {
 		this.config = config;
         this.state = {};
         var node = this;
-		var globalContext = this.context().global;
 		var outmsg = {
 						payload : "",
 						topic : ""
@@ -16,7 +15,8 @@ module.exports = function(RED) {
 		
         this.on('input', function(msg) {
 			
-			if (myGlobal[key]==config.onmatch){
+			if ( key in myGlobal ) {
+				if (myGlobal[key]==config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
 				node.status({
@@ -26,8 +26,8 @@ module.exports = function(RED) {
 				});
 				node.send(outmsg);
 		        
-			}
-            else if (myGlobal[key]==config.offmatch){
+			    }
+                else if (myGlobal[key]==config.offmatch){
 				outmsg.payload = config.offpayload;
 				outmsg.topic   = config.offtopic;
 				node.status({
@@ -36,15 +36,18 @@ module.exports = function(RED) {
 					text: 'match found: ' +key + ": " +config.offmatch
 				});				
 				node.send(outmsg);
-			}
-			else{
+			    }
+			    else{
 				node.status({
 					fill: 'red', 
 					shape: 'dot', 
 					text: 'match not found: ' +key 
 				});
+			    }	
 			}
-			
+            else{
+				node.error("Variable '" + key + "' does not exist in 'context.global' - msg not sent");
+			}		
         });
 		
 		
