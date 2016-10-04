@@ -12,19 +12,14 @@ module.exports = function(RED) {
 					};
 		var key = config.trigger;
 		var myGlobal = RED.settings.functionGlobalContext;
-        var trigger = myGlobal[key];	
-		
-		if (typeof trigger === 'boolean'){
-			trigger = String(trigger);
-			node.warn('convert to boolean:' +trigger);
-		}
-		
-		
+       		
         this.on('input', function(msg) {
 			
+			var trigger = myGlobal[key];
+			trigger = String(trigger);
+			
 			if ( key in myGlobal ) {
-				
-				
+								
 				if (trigger == config.onmatch){
 				outmsg.payload = config.onpayload;
 				outmsg.topic   = config.ontopic;
