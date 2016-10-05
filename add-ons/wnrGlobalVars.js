@@ -10,52 +10,45 @@ module.exports = function(RED) {
 						payload : "",
 						topic : ""
 					};
-		var key = config.trigger;
+		var key = config.variable;
 		var myGlobal = RED.settings.functionGlobalContext;
-       		
-        this.on('input', function(msg) {
+       	
+		if ( key in myGlobal ) {
+		    
+			this.on('input', function(msg) {
+			    var trigger = myGlobal[key];
+			    trigger = String(trigger);
 			
-			var trigger = myGlobal[key];
-			trigger = String(trigger);
-			
-			if ( key in myGlobal ) {
-								
-				if (trigger == config.onmatch){
-				outmsg.payload = config.onpayload;
-				outmsg.topic   = config.ontopic;
-				node.status({
-					fill: 'green', 
-					shape: 'dot', 
-					text: 'match found: ' +key + ": " +config.onmatch
-				});
+			    if (trigger == config.condition){
+				    outmsg.payload = config.truePayload;
+				    outmsg.topic   = config.topic;
+				    node.status({
+					    fill: 'green', 
+					    shape: 'dot', 
+					    text: +key +": " +config.condition
+				    });
+				}
+                else{
+				    outmsg.payload = config.falsePayload;
+				    outmsg.topic   = config.topic;
+				    node.status({
+					    fill: 'blue', 
+					    shape: 'dot', 
+					    text: +key +": " +config.condition
+				    });				
+				}
 				node.send(outmsg);
-		        
-			    }
-                else if (trigger == config.offmatch){
-				outmsg.payload = config.offpayload;
-				outmsg.topic   = config.offtopic;
-				node.status({
-					fill: 'blue', 
-					shape: 'dot', 
-					text: 'match found: ' +key + ": " +config.offmatch
-				});				
-				node.send(outmsg);
-			    }
-			    else{
-				node.status({
+		    });
+	    }	
+		else{
+		    node.error("Variable '" + key + "' does not exist in 'context.global'");
+			node.status({
 					fill: 'red', 
 					shape: 'dot', 
-					text: 'match not found: ' +key 
-				});
-			    }	
-			}
-            else{
-				node.error("Variable '" + key + "' does not exist in 'context.global'");
-			}		
-        });
-		
-		
-	}
+					text: 'Variable:' + key + 'does not exist in context.global'
+				    });		
+		}
+    }
     RED.nodes.registerType("wnrGlobalVars",wnrGlobalVars);
 }
 
