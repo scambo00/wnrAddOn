@@ -26,7 +26,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'green', 
 					    shape: 'dot', 
-					    text: key + '== ' +config.condition
+					    text: key +' == ' +config.condition
 				    });
 				}
                 else{
@@ -35,7 +35,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'blue', 
 					    shape: 'dot', 
-					    text: key + '!= ' +config.condition + '== ' +trigger
+					    text: key +'!= ' +config.condition + '/\n== ' +trigger
 				    });				
 				}
 				node.send(outmsg);
