@@ -1,0 +1,69 @@
+<!-- 
+Licensed under the MIT license, see LICENSE file.
+Author: Will Scarangello (https://github.com/scambo00)
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('wnrGlobalVars',{
+        category: 'wnr_AddOns',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			trigger: {value:""},
+			onmatch: {value:""},
+			ontopic: {value:""},
+			onpayload: {value:""},
+			offmatch: {value:""},
+			offtopic: {value:""},
+			offpayload: {value:""}
+		},
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"wnrGlobalVars";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="wnrGlobalVars">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<hr>
+	<div class="form-row">
+        <label for="node-input-trigger"><i class="icon-tag"></i> Global Variable</label>
+        <input type="text" id="node-input-trigger" placeholder="">
+    </div>
+	<hr>
+    <div class="form-row">
+        <label for="node-input-onmatch"><i class="icon-tag"></i> If match</label>
+        <input type="text" id="node-input-onmatch" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ontopic"><i class="icon-tag"></i>True Topic</label>
+        <input type="text" id="node-input-ontopic" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-onpayload"><i class="icon-tag"></i>True Payload</label>
+        <input type="text" id="node-input-onpayload" placeholder="">
+    </div>
+    <hr>
+    <div class="form-row">
+        <label for="node-input-offmatch"><i class="icon-tag"></i> Else</label>
+        <input type="text" id="node-input-offmatch" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-offtopic"><i class="icon-tag"></i>Else Topic</label>
+        <input type="text" id="node-input-offtopic" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-offpayload"><i class="icon-tag"></i>Else Payload</label>
+        <input type="text" id="node-input-offpayload" placeholder="">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="wnrGlobalVars">
+    <p>A node that sends payload that is dependent on the value of the specified context.Global.Variable</p>
+</script>
