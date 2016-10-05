@@ -14,6 +14,7 @@ module.exports = function(RED) {
 		var myGlobal = RED.settings.functionGlobalContext;
        	
 		if ( key in myGlobal ) {
+			node.status({});
 		    
 			this.on('input', function(msg) {
 			    var trigger = myGlobal[key];
@@ -25,7 +26,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'green', 
 					    shape: 'dot', 
-					    text: +key +": " +config.condition
+					    text: +key + '== ' +config.condition
 				    });
 				}
                 else{
@@ -34,7 +35,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'blue', 
 					    shape: 'dot', 
-					    text: +key +": " +config.condition
+					    text: +key + '!= ' +config.condition
 				    });				
 				}
 				node.send(outmsg);
@@ -45,7 +46,7 @@ module.exports = function(RED) {
 			node.status({
 					fill: 'red', 
 					shape: 'dot', 
-					text: 'Variable:' + key + 'does not exist in context.global'
+					text: 'Variable: ' + key + ' does not exist in context.global'
 				    });		
 		}
     }
