@@ -12,21 +12,19 @@ module.exports = function(RED) {
 					};
 		var key = config.variable;
 		var myGlobal = RED.settings.functionGlobalContext;
-       	
-		if ( key in myGlobal ) {
-			node.status({});
-		    
-			this.on('input', function(msg) {
-			    var trigger = myGlobal[key];
-			    trigger = String(trigger);
-			
+       	node.status({});
+		
+		this.on('input', function(msg) {
+			if ( key in myGlobal ) {
+		        var trigger = String(myGlobal[key]);
+			    
 			    if (trigger == config.condition){
 				    outmsg.payload = config.truePayload;
 				    outmsg.topic   = config.topic;
 				    node.status({
 					    fill: 'green', 
 					    shape: 'dot', 
-					    text: key + ' == ' +config.condition
+					    text: 'Condtion:true' +key + ' == ' +config.condition
 				    });
 				}
                 else{
@@ -35,21 +33,22 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'blue', 
 					    shape: 'dot', 
-					    text: key + ' != ' +config.condition + '\n== ' +trigger
+					    text: 'Condtion:false' +key + ' == ' +config.condition
 				    });				
 				}
-				node.send(outmsg);
-		    });
-	    }	
-		else{
-		    node.error("Variable '" + key + "' does not exist in 'context.global'");
-			node.status({
+				node.send(outmsg);				
+            }			
+		    else{
+		        node.error("Variable '" + key + "' does not exist in 'context.global'");
+			    node.status({
 					fill: 'red', 
 					shape: 'dot', 
 					text: 'Variable: ' + key + ' does not exist in context.global'
-				    });		
-		}
-    }
+				});		
+		    }
+		});
+	}
+        
     RED.nodes.registerType("wnrGlobalVars",wnrGlobalVars);
 }
 
