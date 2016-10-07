@@ -16,7 +16,8 @@ module.exports = function(RED) {
 		
 		this.on('input', function(msg) {
 			if ( key in myGlobal ) {
-		        var trigger = String(myGlobal[key]);
+		        var trigger = myGlobal[key];
+				trigger = String(trigger);
 			    
 			    if (trigger == config.condition){
 				    outmsg.payload = config.truePayload;
@@ -24,7 +25,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'green', 
 					    shape: 'dot', 
-					    text: 'Condtion:true' +key + ' == ' +config.condition
+					    text: 'Condtion:true' +key + ' == ' +trigger
 				    });
 				}
                 else{
@@ -33,7 +34,7 @@ module.exports = function(RED) {
 				    node.status({
 					    fill: 'blue', 
 					    shape: 'dot', 
-					    text: 'Condtion:false' +key + ' == ' +config.condition
+					    text: 'Condtion:false' +key + ' == ' +trigger
 				    });				
 				}
 				node.send(outmsg);				
