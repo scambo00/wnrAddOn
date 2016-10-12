@@ -1,6 +1,7 @@
 // Licensed under the MIT license, see LICENSE file.
 // Author: Will Scarangello (https://github.com/scambo00)
 module.exports = function(RED) {
+	
     function wnrGlobalVars(config) {
         RED.nodes.createNode(this,config);
 		this.config = config;
@@ -16,9 +17,8 @@ module.exports = function(RED) {
 		
 		this.on('input', function(msg) {
 			if ( key in myGlobal ) {
-		        var trigger = myGlobal[key];
-				trigger = String(trigger);
-			    
+		        var trigger = String(myGlobal[key]);
+				
 			    if (trigger == config.condition){
 				    outmsg.payload = config.truePayload;
 				    outmsg.topic   = config.topic;
@@ -40,7 +40,7 @@ module.exports = function(RED) {
 				node.send(outmsg);				
             }			
 		    else{
-		        node.error("Variable '" + key + "' does not exist in 'context.global'");
+		        node.error(" The Variable '" + key + "' does not exist in 'context.global'");
 			    node.status({
 					fill: 'red', 
 					shape: 'dot', 
