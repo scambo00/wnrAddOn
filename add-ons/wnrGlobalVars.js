@@ -15,7 +15,7 @@ module.exports = function(RED) {
 		var myGlobal = RED.settings.functionGlobalContext;
        	node.status({});
 		
-		this.on('input', function(msg) {
+		node.on('input', function(msg) {
 			if ( key in myGlobal ) {
 		        var trigger = String(myGlobal[key]);
 				
