@@ -60,12 +60,15 @@ module.exports = function(RED) {
 			var powered = event.name.toLowerCase();
 	    	WinkCMDmsg = globalContext.executeWinkCMD(config.winkName,config.winkType,powered,config.brightness);
             node.send(WinkCMDmsg);
-			node.send(globalContext.send_ui_note('information',10*60*1000,config.ui_note,Math.floor(Math.random()*1000)));
-	    	node.status({
+			node.status({
 	    		fill: manual ? 'blue' : 'green',
 	    		shape: event.shape,
 	    		text: event.name + ' - message sent'
             });
+			if(config.ui_note !== ""){
+				node.send(globalContext.send_ui_note('information',10*60*1000,config.ui_note,Math.floor(Math.random()*1000)));				
+			}
+			
         }
 	}
 	RED.nodes.registerType("wnrCmdMsg",wnrCmdMsgNode);
