@@ -69,7 +69,7 @@ module.exports = function(RED) {
 			if(config.ui_note !== ""){
 				node.send(globalContext.send_ui_note('information',10*60*1000,config.ui_note,Math.floor(Math.random()*1000)));				
 			}
-			if(pushBullet){
+			if(config.pushboby !== ""){
 				node.send(globalContext.sendViaPushBullet('note',config.pushtitle,config.pushboby,config.pushpersonal));
 			}
 			
