@@ -8,6 +8,7 @@ module.exports = function(RED) {
     var powered = "";
     var brightness = "";
     var WinkCMDmsg = "";
+	var pushBullet = true;
 
     function wnrCmdMsgNode(config) {
         RED.nodes.createNode(this,config);
@@ -67,6 +68,9 @@ module.exports = function(RED) {
             });
 			if(config.ui_note !== ""){
 				node.send(globalContext.send_ui_note('information',10*60*1000,config.ui_note,Math.floor(Math.random()*1000)));				
+			}
+			if(pushBullet){
+				node.send(globalContext.sendViaPushBullet(config.pushtype,config.pushboby,config.pushtitle,config.pushpersonal));
 			}
 			
         }
