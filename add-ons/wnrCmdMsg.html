@@ -9,7 +9,7 @@
 			powered: {value:""},
 			brightness: {value:""},
 			ui_note: {value:""},
-			pushpersonal: {value: false},
+			pushpersonal: {value: ""},
 			pushtitle: {value: ""},
 			pushboby: {value: ""},
 			pushtype: {value: "note"}
@@ -68,18 +68,17 @@
 	<hr>
 	<fieldset>
         <legend>Push Bullet:</legend>
-        Type: <input type="text" id="node-input-pushtype" placeholder=""><br>
-        <select id="node-input-pushtype">
+        Type:<select id="node-input-pushtype">
+		    <option value="note">Note</option>
             <option value="address">Address</option>
             <option value="file">File</option>
             <option value="link">Link</option>
             <option value="list">List</option>
-            <option value="note">Note</option>
         </select>
 		<br>
         Title: <input type="text" id="node-input-pushtitle" placeholder=""><br>
         Boby: <input type="text" id="node-input-pushboby" placeholder=""><br>
-		Personal: <input type="checkbox" id="node-input-pushpersonal" placeholder="" style="width: 20px; margin: 0">
+		Personal: <input type="text" id="node-input-pushpersonal" placeholder="">
     </fieldset>
 </script>
 
