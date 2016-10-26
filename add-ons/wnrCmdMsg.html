@@ -8,7 +8,11 @@
 			winkType: {value:""},
 			powered: {value:""},
 			brightness: {value:""},
-			ui_note: {value:""}
+			ui_note: {value:""},
+			pushpersonal: {value: false},
+			pushtitle: {value: ""},
+			pushboby: {value: ""},
+			pushtype: {value: "note"}
         },
         inputs:1,
         outputs:1,
@@ -64,10 +68,18 @@
 	<hr>
 	<fieldset>
         <legend>Push Bullet:</legend>
-        Type: <input type="text"><br>
-        Title: <input type="text"><br>
-        Boby: <input type="text">
-		Personal: <input type="text">
+        <label for="node-input-pushtype"><i class="fa fa-dot-circle-o"></i> Type</label>
+        <select id="node-input-pushtype">
+            <option value="address">Address</option>
+            <option value="file">File</option>
+            <option value="link">Link</option>
+            <option value="list">List</option>
+            <option value="note">Note</option>
+        </select>
+		<br>
+        Title: <input type="text" id="node-input-pushtitle" placeholder=""><br>
+        Boby: <input type="text" id="node-input-pushboby" placeholder=""><br>
+		Personal: <input type="checkbox" id="node-input-pushpersonal" placeholder="" style="width: 20px; margin: 0">
     </fieldset>
 </script>
 
