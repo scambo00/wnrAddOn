@@ -21,7 +21,7 @@
         },
 		oneditprepare: function() {
 		    var pbApiKey = RED.settings.functionGlobalContext.PushBulletKey;
-            if(pbApiKey !== ""){
+            if(pbApiKey != "" || pbApiKey != null){
 			    $('#FsPushBullet').show();
 			}
 			else{
