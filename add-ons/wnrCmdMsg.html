@@ -18,6 +18,13 @@
         icon: "file.png",
         label: function() {
             return this.name||"wnrCmdMsg";
+        },
+		oneditprepare: function() {
+            if (this.credentials.global) {
+                $('#FsPushBullet').show();
+            } else {
+                $('#FsPushBullet').hide();
+            }
         }
     });
 	
@@ -61,14 +68,15 @@
     </div>
 	<hr>
 	<div class="form-row">
+	<div class="form-tips">Fill in <i>UI Note</i> field to send msg to Home Dashboard Event Logs</div>
         <label for="node-input-ui_note"><i class="icon-tag"></i>UI Note</label>
         <input type="text" id="node-input-ui_note" placeholder="">
     </div>
 	<hr>
 	<fieldset>
-        <legend id="FsPushBullet">Push Bullet:</legend>
+        <legend id="FsPushBullet">Push Bullet </legend>
 		<div class="form-row">
-		    <div class="form-tips">Fill in <i>Body</i> blank to send msg via Push Bullet</div>
+		    <div class="form-tips">Fill in <i>Body</i> to send msg via Push Bullet</div>
 		    <label for="node-input-pushtitle"><i class="icon-tag"></i>Title</label>
 		    <input type="text" id="node-input-pushtitle" placeholder="">
         
