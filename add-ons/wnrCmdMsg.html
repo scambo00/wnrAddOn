@@ -20,9 +20,13 @@
             return this.name||"wnrCmdMsg";
         },
 		oneditprepare: function() {
-           
-                $('#FsPushBullet').hide();
-           
+		    var pbApiKey = RED.settings.functionGlobalContext.PushBulletKey;
+            if(pbApiKey !== ""){
+			    $('#FsPushBullet').show();
+			}
+			else{
+			    $('#FsPushBullet').hide();
+			}
         }
     });
 	
