@@ -21,8 +21,8 @@
         },
 		oneditprepare: function() {
            
-                $('#FsPushBullet').show();
-          
+                $('#FsPushBullet').hide();
+           
         }
     });
 	
@@ -71,8 +71,8 @@
         <input type="text" id="node-input-ui_note" placeholder="">
     </div>
 	<hr>
-	<fieldset>
-        <legend id="FsPushBullet">Push Bullet </legend>
+	<fieldset id="FsPushBullet">
+        <legend>Push Bullet </legend>
 		<div class="form-row">
 		    <div class="form-tips">Fill in <i>Body</i> to send msg via Push Bullet</div>
 		    <label for="node-input-pushtitle"><i class="icon-tag"></i>Title</label>
