@@ -21,7 +21,8 @@
         },
 		oneditprepare: function() {
 		    var pbApiKey = RED.settings.functionGlobalContext.PushBulletKey;
-            if(pbApiKey != "" || pbApiKey != null){
+			$("#node-input-pushapikey").val(pbApiKey);
+            if(pbApiKey != ""){
 			    $('#FsPushBullet').show();
 			}
 			else{
@@ -88,6 +89,10 @@
 		    <div class="form-tips">Leave <i>Personal</i> blank to send msg to Push Bullet channel</div>
 		    <label for="node-input-pushpersonal"><i class="icon-tag"></i>Personal</label>
 		    <input type="text" id="node-input-pushpersonal" placeholder="">
+			
+			<label for="node-input-pushapikey"><i class="icon-tag"></i>API Key</label>
+		    <input type="text" id="node-input-pushapikey" placeholder="">
+			
 		</div>
     </fieldset>
 </script>
