@@ -66,10 +66,19 @@
     </div>
 	<hr>
 	<fieldset>
-        <legend>Push Bullet:</legend>
-        Title: <input type="text" id="node-input-pushtitle" placeholder=""><br>
-        Boby: <input type="text" id="node-input-pushboby" placeholder=""><br>
-		Personal: <input type="text" id="node-input-pushpersonal" placeholder="">
+        <legend id="FsPushBullet">Push Bullet:</legend>
+		<div class="form-row">
+		    <div class="form-tips">Fill in <i>Body</i> blank to send msg via Push Bullet</div>
+		    <label for="node-input-pushtitle"><i class="icon-tag"></i>Title</label>
+		    <input type="text" id="node-input-pushtitle" placeholder="">
+        
+			<label for="node-input-pushboby"><i class="icon-tag"></i>Boby</label>
+		    <input type="text" id="node-input-pushboby" placeholder="">
+			
+		    <div class="form-tips">Leave <i>Personal</i> blank to send msg to Push Bullet channel</div>
+		    <label for="node-input-pushpersonal"><i class="icon-tag"></i>Personal</label>
+		    <input type="text" id="node-input-pushpersonal" placeholder="">
+		</div>
     </fieldset>
 </script>
 
