@@ -15,6 +15,7 @@ module.exports = function(RED) {
 		var myGlobal = RED.settings.functionGlobalContext;
        	node.status({});
 		
+		node.previous = {};
 		node.on('input', function(msg) {
 			if ( key in myGlobal ) {
 		        var trigger = String(myGlobal[key]);
@@ -37,7 +38,11 @@ module.exports = function(RED) {
 					    text: 'Condtion:false' +key + ' == ' +trigger
 				    });				
 				}
-				node.send(outmsg);				
+				if (outmsg.payload !== node.previous) {
+                    node.previous = outmsg.payload;
+                    node.send(outmsg);
+                }
+								
             }			
 		    else{
 		        node.error(" The Variable '" + key + "' does not exist in 'context.global'");
