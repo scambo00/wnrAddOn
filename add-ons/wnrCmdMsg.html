@@ -21,7 +21,7 @@
             return this.name||"wnrCmdMsg";
         },
 		oneditprepare: function() {
-		    //var pbApiKey = RED.settings.functionGlobalContext.PushBulletKey;
+		    var pbApiKey = RED.settings.functionGlobalContext.PushBulletKey;
 			$("#node-input-pushapikey").val("pbApiKey");
             if(pbApiKey != ""){
 			    $('#FsPushBullet').show();
