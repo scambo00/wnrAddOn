@@ -13,7 +13,8 @@ Author: Will Scarangello (https://github.com/scambo00)
 			condition: {value:""},
 			truePayload: {value:""},
 			falsePayload: {value:""},
-			topic: {value:""}
+			topic: {value:""},
+			rbe: {value: true}
 		},
         inputs:1,
         outputs:1,
@@ -30,6 +31,11 @@ Author: Will Scarangello (https://github.com/scambo00)
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 	<hr>
+	<div class="form-row">
+	    <label for="node-input-rbe"><i class="icon-tag"></i>rbe</label>
+        <input type="checkbox" id="node-input-rbe" placeholder="">
+    </div>
+	<div class="form-tips">Defaults to RBE mode.  Uncheck to change</div>
 	<div class="form-row">
         <label for="node-input-variable"><i class="icon-tag"></i>Variable</label>
         <input type="text" id="node-input-variable" placeholder="">

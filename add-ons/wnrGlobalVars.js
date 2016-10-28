@@ -38,10 +38,16 @@ module.exports = function(RED) {
 					    text: 'Condtion:false' +key + ' == ' +trigger
 				    });				
 				}
-				if (outmsg.payload !== node.previous) {
-                    node.previous = outmsg.payload;
-                    node.send(outmsg);
-                }
+				if(config.rbe){
+				    if (outmsg.payload !== node.previous) {
+                        node.previous = outmsg.payload;
+                        node.send(outmsg);
+                    }	
+				}
+				else{
+				    node.send(outmsg);
+				}
+				
 								
             }			
 		    else{
